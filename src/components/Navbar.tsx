@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
-import { ThemeToggle } from "./theme/ThemeToggle";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,14 +52,14 @@ const Navbar = () => {
             e.preventDefault();
             scrollToTop();
           }}
-          aria-label="Druk Robot"
+          aria-label="Home"
         >
           <img 
             src="/logo.svg" 
-            alt="Druk Robot Logo" 
+            alt="Logo" 
             className="h-7 sm:h-8" 
           />
-          <span className="font-bold text-xl dark:text-white">Druk Robot</span>
+          <span className="font-bold text-xl dark:text-white">Atlas</span>
         </a>
 
         {/* Desktop Navigation */}
@@ -78,12 +77,10 @@ const Navbar = () => {
           <a href="#features" className="nav-link">About</a>
           <a href="#details" className="nav-link">Contact</a>
           <a href="#developer" className="nav-link">Developer</a>
-          <ThemeToggle />
         </nav>
 
         {/* Mobile menu button - increased touch target */}
-        <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
+        <div className="md:hidden flex items-center">
           <button 
             className="text-gray-700 dark:text-white p-3 focus:outline-none" 
             onClick={toggleMenu}

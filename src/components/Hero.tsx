@@ -7,6 +7,7 @@ import LottieAnimation from "./LottieAnimation";
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
   const [lottieData, setLottieData] = useState<any>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
@@ -96,26 +97,56 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMobile]);
   
+  // Dynamic background effect
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    
+    let hueRotation = 0;
+    let gradientAngle = 0;
+    
+    const animateBackground = () => {
+      hueRotation = (hueRotation + 0.1) % 30; // Subtle hue rotation
+      gradientAngle = (gradientAngle + 0.2) % 360; // Rotating gradient
+      
+      section.style.backgroundImage = `
+        linear-gradient(
+          ${gradientAngle}deg, 
+          hsl(40, 90%, 95%) 0%, 
+          hsl(${48 + hueRotation}, 100%, 92%) 50%, 
+          hsl(52, 95%, 90%) 100%
+        ),
+        url("/Header-background.webp")
+      `;
+      
+      requestAnimationFrame(animateBackground);
+    };
+    
+    const animation = requestAnimationFrame(animateBackground);
+    return () => cancelAnimationFrame(animation);
+  }, []);
+  
   return (
     <section 
       className="overflow-hidden relative bg-cover" 
       id="hero" 
+      ref={sectionRef}
       style={{
-        backgroundImage: 'url("/Header-background.webp")',
         backgroundPosition: 'center 30%', 
-        padding: isMobile ? '100px 12px 40px' : '120px 20px 60px'
+        padding: isMobile ? '100px 12px 40px' : '120px 20px 60px',
+        backgroundBlendMode: 'overlay'
       }}
     >
-      <div className="absolute -top-[10%] -right-[5%] w-1/2 h-[70%] bg-pulse-gradient opacity-20 blur-3xl rounded-full"></div>
+      <div className="absolute -top-[10%] -right-[5%] w-1/2 h-[70%] bg-yellow-200 opacity-20 blur-3xl rounded-full"></div>
       
       <div className="container px-4 sm:px-6 lg:px-8" ref={containerRef}>
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-center">
           <div className="w-full lg:w-1/2">
             <div 
-              className="pulse-chip mb-3 sm:mb-6 opacity-0 animate-fade-in" 
+              className="druk-chip mb-3 sm:mb-6 opacity-0 animate-fade-in" 
               style={{ animationDelay: "0.1s" }}
             >
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">01</span>
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-yellow-500 text-white mr-2">01</span>
               <span>Purpose</span>
             </div>
             
@@ -196,7 +227,7 @@ const Hero = () => {
         </div>
       </div>
       
-      <div className="hidden lg:block absolute bottom-0 left-1/4 w-64 h-64 bg-pulse-100/30 rounded-full blur-3xl -z-10 parallax" data-speed="0.05"></div>
+      <div className="hidden lg:block absolute bottom-0 left-1/4 w-64 h-64 bg-yellow-100/30 rounded-full blur-3xl -z-10 parallax" data-speed="0.05"></div>
     </section>
   );
 };

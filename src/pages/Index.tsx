@@ -37,6 +37,30 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
+    // Dynamic background colors for body
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const scrollHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercentage = Math.min(scrollY / scrollHeight, 1);
+      
+      // Subtle background color change based on scroll position
+      document.documentElement.style.setProperty(
+        '--background-color', 
+        `hsl(${48 + (scrollPercentage * 10)}, ${95 - (scrollPercentage * 15)}%, ${98 - (scrollPercentage * 5)}%)`
+      );
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    // Initialize
+    document.documentElement.style.setProperty('--background-color', 'hsl(48, 95%, 98%)');
+    document.body.style.background = 'var(--background-color)';
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
     // This helps ensure smooth scrolling for the anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -60,7 +84,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900">
+    <div className="min-h-screen bg-white transition-colors duration-500" style={{ background: 'var(--background-color)' }}>
       <Navbar />
       <main className="space-y-4 sm:space-y-8"> {/* Reduced space on mobile */}
         <Hero />
