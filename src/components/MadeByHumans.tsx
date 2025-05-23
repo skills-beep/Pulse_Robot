@@ -1,7 +1,7 @@
 
 import React from "react";
 const MadeByHumans = () => {
-  return <section id="made-by-humans" className="w-full bg-white py-0">
+  return <section id="made-by-humans" className="w-full bg-white dark:bg-gray-900 py-0">
       <div className="section-container opacity-0 animate-on-scroll pb-2">
         {/* Removed the pulse-chip button/element that was here */}
         
@@ -10,7 +10,7 @@ const MadeByHumans = () => {
           backgroundImage: "url('/background-section3.png')"
         }}>
             <div className="flex items-center text-white">
-              <img src="/logo.svg" alt="Pulse Robot Logo" className="h-5 sm:h-6 w-auto mr-3 invert" />
+              <img src="/logo.svg" alt="Druk Robot Logo" className="h-5 sm:h-6 w-auto mr-3 invert" />
               <span className="text-white text-xl font-medium">
             </span>
             </div>
@@ -24,12 +24,12 @@ const MadeByHumans = () => {
               marginBottom: "-30px",
               padding: "0px 0px 100px"
             }} className="sm:text-5xl font-playfair text-white italic mt-0 mx-0 font-thin text-6xl md:text-7xl py-0 px-0 text-center lg:text-7xl">
-                Made By AI & Human
+                Made By AI & Bhutanese Hands
               </h2>
             </div>
             
             {/* White box at the bottom with overflow */}
-            <div className="w-[120%] bg-white h-10 rounded-t-lg absolute left-[-10%] bottom-0"></div>
+            <div className="w-[120%] bg-white dark:bg-gray-900 h-10 rounded-t-lg absolute left-[-10%] bottom-0"></div>
           </div>
         </div>
       </div>

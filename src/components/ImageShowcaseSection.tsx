@@ -3,15 +3,15 @@ import React from "react";
 
 const ImageShowcaseSection = () => {
   return (
-    <section className="w-full pt-0 pb-8 sm:pb-12 bg-white" id="showcase">
+    <section className="w-full pt-0 pb-8 sm:pb-12 bg-white dark:bg-gray-900" id="showcase">
       <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-12 animate-on-scroll">
-          <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-gray-900 mb-3 sm:mb-4">
-            Experience the Future Today
+          <h2 className="text-3xl sm:text-4xl font-display font-bold tracking-tight text-gray-900 dark:text-white mb-3 sm:mb-4">
+            Experience Bhutanese Innovation Today
           </h2>
-          <p className="text-base sm:text-lg text-gray-600">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">
             Our cutting-edge humanoid robot is designed to transform how we interact 
-            with technology in everyday environments.
+            with technology in everyday environments, inspired by Bhutanese values.
           </p>
         </div>
         
@@ -19,16 +19,16 @@ const ImageShowcaseSection = () => {
           <div className="w-full">
             <img 
               src="/lovable-uploads/c3d5522b-6886-4b75-8ffc-d020016bb9c2.png" 
-              alt="Advanced humanoid robot with orange and white design" 
+              alt="Advanced humanoid robot with yellow and white design" 
               className="w-full h-auto object-cover"
             />
           </div>
-          <div className="bg-white p-4 sm:p-8">
-            <h3 className="text-xl sm:text-2xl font-display font-semibold mb-3 sm:mb-4">Next Generation Robotics</h3>
-            <p className="text-gray-700 text-sm sm:text-base">
+          <div className="bg-white dark:bg-gray-800 p-4 sm:p-8">
+            <h3 className="text-xl sm:text-2xl font-display font-semibold mb-3 sm:mb-4 dark:text-white">Tashi: Next Generation Robotics</h3>
+            <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">
               Built with precision engineering and sophisticated AI, our robots seamlessly 
-              integrate into various environments, from homes to hospitals, providing 
-              assistance and enriching human experiences.
+              integrate into various environments, from homes to dzongs (fortresses), providing 
+              assistance and enriching human experiences with Bhutanese cultural sensitivity.
             </p>
           </div>
         </div>

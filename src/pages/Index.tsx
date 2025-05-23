@@ -10,6 +10,7 @@ import Features from "@/components/Features";
 import Testimonials from "@/components/Testimonials";
 import Newsletter from "@/components/Newsletter";
 import MadeByHumans from "@/components/MadeByHumans";
+import DeveloperSection from "@/components/DeveloperSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -59,7 +60,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Navbar />
       <main className="space-y-4 sm:space-y-8"> {/* Reduced space on mobile */}
         <Hero />
@@ -70,6 +71,7 @@ const Index = () => {
         <Features />
         <Testimonials />
         <Newsletter />
+        <DeveloperSection />
         <MadeByHumans />
       </main>
       <Footer />

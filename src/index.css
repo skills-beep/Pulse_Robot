@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
@@ -26,35 +25,35 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 24 95% 53%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 48 100% 50%;
+    --primary-foreground: 0 0% 20%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 60 33% 96.1%;
+    --secondary-foreground: 60 40% 25.2%;
 
-    --muted: 210 40% 96.1%;
+    --muted: 60 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
+    --accent: 48 96% 89%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 24 95% 53%;
+    --border: 48 14% 90%;
+    --input: 48 14% 90%;
+    --ring: 48 100% 50%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 48 100% 97%;
+    --sidebar-foreground: 48 5.3% 26.1%;
+    --sidebar-primary: 48 5.9% 10%;
+    --sidebar-primary-foreground: 48 100% 98%;
+    --sidebar-accent: 48 4.8% 95.9%;
+    --sidebar-accent-foreground: 48 5.9% 10%;
+    --sidebar-border: 48 13% 91%;
+    --sidebar-ring: 48 91.2% 59.8%;
   }
 
   .dark {
@@ -67,8 +66,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 24 95% 53%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 48 100% 50%;
+    --primary-foreground: 0 0% 20%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -76,23 +75,24 @@
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 48 50% 25%;
+    --accent-foreground: 48 100% 90%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --ring: 48 93.0% 53.9%;
+    
+    --sidebar-background: 48 5.9% 10%;
+    --sidebar-foreground: 48 4.8% 95.9%;
+    --sidebar-primary: 48 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 48 3.7% 15.9%;
+    --sidebar-accent-foreground: 48 4.8% 95.9%;
+    --sidebar-border: 48 3.7% 15.9%;
+    --sidebar-ring: 48 91.2% 59.8%;
   }
 }
 
@@ -138,8 +138,8 @@
     background-position: center;
   }
 
-  .pulse-chip {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-pulse-100 text-pulse-600 border border-pulse-200;
+  .druk-chip {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-druk-100 text-druk-600 border border-druk-200;
   }
   
   .section-container {
@@ -163,15 +163,15 @@
   }
   
   .button-primary {
-    @apply bg-pulse-500 hover:bg-pulse-600 text-white font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98];
+    @apply bg-druk-500 hover:bg-druk-600 text-black font-medium py-3 px-6 rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98];
   }
 
   .button-secondary {
-    @apply bg-transparent border border-gray-300 hover:border-pulse-500 text-gray-800 hover:text-pulse-500 font-medium py-3 px-6 rounded-full transition-all duration-300;
+    @apply bg-transparent border border-gray-300 hover:border-druk-500 text-gray-800 hover:text-druk-500 font-medium py-3 px-6 rounded-full transition-all duration-300;
   }
   
   .nav-link {
-    @apply relative text-gray-800 hover:text-pulse-500 py-2 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-pulse-500 after:transition-all hover:after:w-full;
+    @apply relative text-gray-800 hover:text-druk-500 py-2 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-druk-500 after:transition-all hover:after:w-full dark:text-white dark:hover:text-druk-300;
   }
 }
 
