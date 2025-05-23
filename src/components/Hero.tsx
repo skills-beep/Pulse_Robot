@@ -9,6 +9,7 @@ const Hero = () => {
   const imageRef = useRef<HTMLImageElement>(null);
   const [lottieData, setLottieData] = useState<any>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
     // Check if mobile on mount and when window resizes
@@ -23,10 +24,19 @@ const Hero = () => {
   }, []);
 
   useEffect(() => {
-    fetch('/loop-header.lottie')
-      .then(response => response.json())
-      .then(data => setLottieData(data))
-      .catch(error => console.error("Error loading Lottie animation:", error));
+    const fetchLottieData = async () => {
+      try {
+        const response = await fetch('/loop-header.lottie');
+        if (!response.ok) throw new Error('Failed to load animation');
+        const data = await response.json();
+        setLottieData(data);
+      } catch (error) {
+        console.error("Error loading Lottie animation:", error);
+        setIsImageLoaded(true); // Fall back to static image if lottie fails
+      }
+    };
+    
+    fetchLottieData();
   }, []);
 
   useEffect(() => {
@@ -45,7 +55,7 @@ const Hero = () => {
       const x = (e.clientX - left) / width - 0.5;
       const y = (e.clientY - top) / height - 0.5;
 
-      imageRef.current.style.transform = `perspective(1000px) rotateY(${x * 2.5}deg) rotateX(${-y * 2.5}deg) scale3d(1.02, 1.02, 1.02)`;
+      imageRef.current.style.transform = `perspective(1000px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg) scale3d(1.05, 1.05, 1.05)`;
     };
     
     const handleMouseLeave = () => {
@@ -65,7 +75,7 @@ const Hero = () => {
         container.removeEventListener("mouseleave", handleMouseLeave);
       }
     };
-  }, [isMobile]);
+  }, [isMobile, isImageLoaded]);
   
   useEffect(() => {
     // Skip parallax on mobile
@@ -138,7 +148,7 @@ const Hero = () => {
                   cursor: 'pointer',
                   fontSize: '14px',
                   lineHeight: '20px',
-                  padding: '16px 24px', // Slightly reduced padding for mobile
+                  padding: '16px 24px',
                   border: '1px solid white',
                 }}
               >
@@ -159,19 +169,28 @@ const Hero = () => {
                 />
               </div>
             ) : (
-              <>
-              <div className="absolute inset-0 bg-dark-900 rounded-2xl sm:rounded-3xl -z-10 shadow-xl"></div>
-              <div className="relative transition-all duration-500 ease-out overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl">
-                <img 
-                  ref={imageRef} 
-                  src="/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png" 
-                  alt="Atlas Robot" 
-                  className="w-full h-auto object-cover transition-transform duration-500 ease-out" 
-                  style={{ transformStyle: 'preserve-3d' }} 
-                />
-                <div className="absolute inset-0" style={{ backgroundImage: 'url("/hero-image.jpg")', backgroundSize: 'cover', backgroundPosition: 'center', mixBlendMode: 'overlay', opacity: 0.5 }}></div>
+              <div className="relative perspective-1000 animate-fade-in" style={{ animationDelay: "0.9s" }}>
+                <div className="absolute inset-0 bg-dark-900 rounded-2xl sm:rounded-3xl -z-10 shadow-xl"></div>
+                <div className="relative transition-all duration-500 ease-out overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl">
+                  <img 
+                    ref={imageRef} 
+                    src="/lovable-uploads/5663820f-6c97-4492-9210-9eaa1a8dc415.png" 
+                    alt="Atlas Robot" 
+                    className="w-full h-auto object-cover transition-transform duration-500 ease-out"
+                    style={{ transformStyle: 'preserve-3d' }}
+                    onLoad={() => setIsImageLoaded(true)}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-yellow-500/20 to-orange-500/30 mix-blend-overlay"></div>
+                  
+                  {/* Dynamic highlight effect */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/0 via-white/30 to-orange-300/0 opacity-0 hover:opacity-100 transition-opacity duration-700"></div>
+                </div>
+                
+                {/* Animated particles */}
+                <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-yellow-400 rounded-full animate-float"></div>
+                <div className="absolute top-1/3 right-1/4 w-3 h-3 bg-orange-500 rounded-full animate-float" style={{animationDelay: "1s"}}></div>
+                <div className="absolute bottom-1/4 right-1/3 w-2 h-2 bg-yellow-500 rounded-full animate-float" style={{animationDelay: "2s"}}></div>
               </div>
-              </>
             )}
           </div>
         </div>
